@@ -12,7 +12,7 @@ class Score extends Model
     use HasFactory;
     protected $fillable = ['game_id', 'number', 'status', 'score'];
 
-    public static function calculate(int $from, int $to, int $number){
+    public static function calculate(int $from, int $to, int $number, int $attempts){
         $range = $to - $from;
         $match = 0;
         $probability = 1/$range;

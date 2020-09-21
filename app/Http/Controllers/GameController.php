@@ -59,10 +59,10 @@ class GameController extends Controller
        $won = $game->number == $request->number;
        $status = $won;
        if(!$won){
-           $status = $scores<$game->attempts?0:2;
+           $status = $scores+1<$game->attempts?0:2;
        }
        
-       $score = $won?Score::calculate($game->from, $game->to, $request->number):0;
+       $score = $won?Score::calculate($game->from, $game->to, $request->number, $scores + 1):0;
 
       $newscore = Score::create(array(
            'game_id' => $request->id,
